@@ -1,0 +1,13 @@
+
+database: data/customer_purchases.csv # I assume my database is given csv file.
+
+model:
+  name: "Linear Regression Model"
+  version: "v.0.0.1"
+  path: Downloads/downloaded_linear_regression_model.joblib
+
+
+
+registry:
+  name: "ado-flow"
+  url: http://172.18.0.4:5000/ #  container-to-container need to inspect container or need to look from logs

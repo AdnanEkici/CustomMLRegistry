@@ -1,0 +1,42 @@
+version: "3.4"
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/etc/prometheus/console_libraries"
+      - "--web.console.templates=/etc/prometheus/consoles"
+      - "--web.enable-lifecycle"
+  grafana:
+    hostname: grafana
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+
+  model_registry:
+      image: ai-base:latest
+      container_name: ado-flow-model-registry-container
+      build:
+        context: .
+        dockerfile: Dockerfile.base
+      depends_on:
+        - prometheus
+      volumes:
+        - ./database:/opt/registry/database:rw
+        - ./Downloads:/opt/registry/Downloads:rw
+        - ./app/logger:/opt/registry/app/logger:rw
+        - ./saved_models:/opt/registry/saved_models:rw
+        - ./app/model_registry:/opt/registry/app/model_registry:ro
+      working_dir: /opt/registry
+      ports:
+          - "5000:5000"
+      entrypoint: [python, "app/model_registry/endpoint.py"]
+
+
+      tty: true # docker run -t

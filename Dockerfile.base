@@ -1,0 +1,33 @@
+FROM ubuntu:22.04
+
+ENV HOME=/opt/app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    software-properties-common \
+    python3.10-dev \
+    python3-pip \
+    autotools-dev \
+    build-essential \
+    libssl-dev \
+    git \
+    openssh-server \
+    nano \
+    wget \
+    qtbase5-dev \
+    gdb \
+    libgl1
+
+# Python
+RUN ln -s /usr/bin/python3 /usr/bin/python && \
+    rm /usr/bin/pip && \
+    ln -s /usr/bin/pip3 /usr/bin/pip && \
+    pip install -U pip
+
+# Install project requirements
+COPY requirements.txt ${HOME}
+RUN pip install -r ${HOME}/requirements.txt --ignore-installed
+# COPY app ${HOME}
+
+ENV PYTHONPATH "${PYTHONPATH}:${HOME}"
+# Clean the image
+RUN apt clean && apt autoclean && pip cache purge

@@ -1,0 +1,21 @@
+version: "3.4"
+
+# docker compose -f docker-compose-locust-test.yml up -d
+
+services:
+  model_registry_locust_test:
+      image: model_registry:latest
+      container_name: model-registry-locust-container
+      build:
+        context: .
+        dockerfile: Dockerfile.base
+      volumes:
+        - ./tests/endpoint_tests:/opt/app/tests/endpoint_tests:ro
+        - ./scripts:/opt/app/scripts:ro
+      working_dir: /opt/app
+      ports:
+          - "5000:5000"
+          - "8089:8089"
+      entrypoint: ["sh", "scripts/start_locust_endpoint.sh"]
+      stdin_open: true
+      tty: true

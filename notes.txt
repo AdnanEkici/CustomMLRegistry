@@ -1,0 +1,7 @@
+* Isolation Forest veya DBSCAN araştır.
+
+* MAE MSE R^2 bunlar nedir
+
+* LinearRegression ve XGBOOST regression 2 tane daha
+
+* 

@@ -1,0 +1,128 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Up Model Registry",
+            "type": "docker-compose",
+            "dockerCompose": {
+                "up": {
+                    "build": false,
+                    "detached": true
+                },
+                "files": [
+                    "${workspaceFolder}/docker-compose-registry.yml"
+                ]
+            }
+        },
+        {
+            "label": "Run Model Registry Locust Test",
+            "type": "docker-compose",
+            "dockerCompose": {
+                "up": {
+                    "build": true,
+                    "detached": true
+                },
+                "files": [
+                    "${workspaceFolder}/docker-compose-locust-test.yml"
+                ]
+            }
+        },
+        {
+            "label": "Start Training",
+            "type": "docker-compose",
+            "dockerCompose": {
+                "up": {
+                    "build": false,
+                    "detached": false
+                },
+                "files": [
+                    "${workspaceFolder}/docker-compose-trainer.yml"
+                ]
+            },
+            "options": {
+                "env": {
+                    "CONFIG_FILE": "${input:training_config_filename}"
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Start Inference Server",
+            "type": "docker-compose",
+            "dockerCompose": {
+                "up": {
+                    "build": false,
+                    "detached": false
+                },
+                "files": [
+                    "${workspaceFolder}/docker-compose-inference.yml"
+                ]
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Stop Inference Server",
+            "type": "docker-compose",
+            "dockerCompose": {
+                "down": {
+                    "removeVolumes": false
+                },
+                "files": [
+                    "${workspaceFolder}/docker-compose-inference.yml"
+                ]
+            }
+        },
+        {
+            "label": "Stop Model Registry Locust Test",
+            "type": "docker-compose",
+            "dockerCompose": {
+                "down": {
+                    "removeVolumes": false
+                },
+                "files": [
+                    "${workspaceFolder}/docker-compose-locust-test.yml"
+                ]
+            }
+        },
+        {
+            "label": "Down Model Registry",
+            "type": "docker-compose",
+            "dockerCompose": {
+                "down": {
+                    "removeVolumes": false
+                },
+                "files": [
+                    "${workspaceFolder}/docker-compose-registry.yml"
+                ]
+            }
+        },
+        {
+            "label": "Down Trainer",
+            "type": "docker-compose",
+            "dockerCompose": {
+                "down": {
+                    "removeVolumes": false
+                },
+                "files": [
+                    "${workspaceFolder}/docker-compose-trainer.yml"
+                ]
+            }
+        },
+    ],
+    "inputs":
+    [
+        {
+            "type": "promptString",
+            "id": "training_config_filename",
+            "description": "Enter training configuration file name. Note: Training config files must be in <app/trainer/configs>",
+            "default": "linear_regression_train_config.yml",
+            "password": false
+        }
+    ]
+}

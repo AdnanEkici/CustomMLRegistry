@@ -1,0 +1,42 @@
+
+meta_data:
+  name: "XGBOOST Regression Model"
+  version: "v.0.0.1"
+  description: "Model to train for task 1"
+  framework: "scikit-learn"
+  framework_version: "1.5.1"
+  training_data: "Customer purchase data."
+  model_author: "Adnan Ekici"
+  status: "deployed"
+  labels: ["Task-1", "Regression", "best", "xgboost"]
+
+train_config:
+  dataset:
+    raw_dataset_csv: "data/customer_purchases.csv"
+    numerical_columns:
+      - 'age'
+      - 'annual_income'
+      - 'purchase_amount'
+    categorical_columns:
+      - 'gender'
+    save_datasets_as_csv: False
+
+  train:
+    features: ['age', 'gender_Female', 'Recency', 'Frequency', 'Monetary', "annual_income", "purchase_amount"]
+    prediction_target: "next_month_purchase_amount"
+    deflection: 0
+    random_state: 42 # Hail Hitchhiker's Guide to the Galaxy
+    saved_model_path: task_1_xgboost_regression_model.joblib
+    train_test_split_ratio: 0.2
+    hyperparameters:
+      objective: 'reg:squarederror'
+      max_depth: 6
+      learning_rate: 0.1
+      n_estimators: 100
+
+
+  registry:
+    name: "ado-flow"
+    url: "http://127.0.0.1:5000"
+
+  model_trainer__eval__: XGBoostRegressionTrainer

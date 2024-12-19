@@ -1,0 +1,172 @@
+{
+    "upload_model_payloads": [
+        {
+            "name": "RandomForestClassifier",
+            "version": "1.0",
+            "file_path": "Downloads/random_forest_model.pkl",
+            "description": "Random Forest model for classifying customer segments",
+            "framework": "scikit-learn",
+            "framework_version": "0.24.1",
+            "training_data": "Customer segmentation dataset",
+            "hyperparameters": "{\"n_estimators\": 100, \"max_depth\": 5}",
+            "evaluation_metrics": "{\"accuracy\": 0.87, \"f1_score\": 0.82}",
+            "model_author": "John Smith",
+            "status": "under review",
+            "labels": ["classification", "customer-segmentation", "scikit-learn", "random-forest"]
+        },
+        {
+            "name": "SVM",
+            "version": "1.1",
+            "file_path": "Downloads/random_forest_model.pkl",
+            "description": "SVM model for classifying customer segments",
+            "framework": "scikit-learn",
+            "framework_version": "0.24.12",
+            "training_data": "Customer segmentation dataset",
+            "hyperparameters": "{\"kernel\": \"rbf\", \"C\": 1.0}",
+            "evaluation_metrics": "{\"accuracy\": 0.88, \"f1_score\": 0.83}",
+            "model_author": "Jane Doe",
+            "status": "under review",
+            "labels": ["classification", "customer-segmentation", "scikit-learn", "svm"]
+        },
+        {
+            "name": "YOLOv9",
+            "version": "1.1",
+            "file_path": "Downloads/random_forest_model.pkl",
+            "description": "YOLOv9 model for object detection",
+            "framework": "scikit-learn",
+            "framework_version": "0.24.12",
+            "training_data": "Object detection dataset",
+            "hyperparameters": "{\"n_estimators\": 100, \"max_depth\": 5}",
+            "evaluation_metrics": "{\"mAP\": 0.65}",
+            "model_author": "Alice Brown",
+            "status": "under review",
+            "labels": ["object-detection", "yolo", "scikit-learn"]
+        },
+        {
+            "name": "YOLOv7",
+            "version": "1.1",
+            "file_path": "Downloads/random_forest_model.pkl",
+            "framework": "scikit-learn",
+            "framework_version": "0.24.12",
+            "training_data": "Object detection dataset",
+            "evaluation_metrics": "{\"mAP\": 0.68}",
+            "status": "under review",
+            "labels": ["object-detection", "yolo", "scikit-learn"]
+        },
+        {
+            "name": "YOLOv7",
+            "version": "1.1",
+            "file_path": "Downloads/random_forest_model.pkl",
+            "framework": "pytorch",
+            "framework_version": "1.8.1",
+            "training_data": "Object detection dataset",
+            "evaluation_metrics": "{\"mAP\": 0.72}",
+            "status": "under review",
+            "labels": ["object-detection", "yolo", "pytorch"]
+        }
+    ],
+    "fetch_model_test_cases": [
+    {
+      "name": "RandomForestClassifier",
+      "version": "1.0"
+    },
+    {
+      "name": "SVM",
+      "version": "no_version"
+    },
+    {
+      "name": "YOLOv9",
+      "version": "1.1"
+    },
+    {
+      "name": "YOLOv7",
+      "version": "1.1"
+    },
+    {
+      "name": "NonExistentModel",
+      "version": "1.0"
+    },
+    {
+      "name": "",
+      "version": "1.0"
+    },
+    {
+      "name": "RandomForestClassifier",
+      "version": ""
+    },
+    {
+      "name": "YOLOv7",
+      "version": "2.0"
+    }
+  ],
+    "update_model_test_cases": [
+    {
+      "name": "RandomForestClassifier",
+      "version": "1.0",
+      "framework_version": "0.24.2",
+      "model_author": "ados",
+      "labels": ["test"]
+    },
+    {
+      "name": "SVM",
+      "version": "1.1",
+      "framework_version": "0.24.12",
+      "model_author": "John Smith",
+      "labels": ["classification", "machine-learning"]
+    },
+    {
+      "name": "YOLOv9",
+      "version": "1.1",
+      "framework_version": "0.24.3",
+      "model_author": "Charlie Brown",
+      "labels": ["object-detection"]
+    },
+    {
+      "name": "YOLOv7",
+      "version": "1.1",
+      "framework_version": "1.8.1",
+      "model_author": "Jane Doe",
+      "labels": ["deep-learning", "image-recognition"]
+    },
+    {
+      "name": "CustomModel",
+      "version": "2.0",
+      "framework_version": "3.0.0",
+      "labels": ["custom", "experimental"]
+    },
+   {
+      "name": "CustomModel",
+      "version": "2.0"
+    }
+  ],
+    "delete_model_test_cases": [
+    {
+      "name": "RandomForestClassifier",
+      "version": "1.0"
+    },
+    {
+      "name": "SVM",
+      "version": "no_version"
+    },
+    {
+      "name": "YOLOv9",
+      "version": "1.1"
+    },
+    {
+      "name": "YOLOv7",
+      "version": "1.1"
+    },
+    {
+      "name": "NonExistentModel",
+      "version": "1.0"
+    },
+    {
+      "name": "RandomForestClassifier",
+      "version": "2"
+    },
+    {
+      "name": "YOLOv7",
+      "version": "2.0"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+version: "3.4"
+
+services:
+  inference-server:
+      image: ai-base:latest
+      container_name: inference-container
+      build:
+        context: .
+        dockerfile: Dockerfile.base
+      volumes:
+        - ./data:/opt/app/inference_app/data:ro
+        - ./logs:/opt/app/inference_app/logs:rw
+        - ./Downloads:/opt/app/inference_app/Downloads:rw
+        - ./app/logger:/opt/app/inference_app/app/logger:ro
+        - ./app/inference/:/opt/app/inference_app/app/inference:ro
+      ports:
+          - "2000:2000"
+      working_dir: /opt/app/inference_app
+      entrypoint: "/bin/sh -c \"uvicorn app.inference.endpoint:app --host 0.0.0.0 --port 2000 --workers 4\""

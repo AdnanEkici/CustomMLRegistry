@@ -1,0 +1,50 @@
+meta_data:
+    description: Model to train for task 1
+    evaluation_metrics: '{"MSE": 183388.92020159023, "MAE": 330.36071476714864, "R2":
+        0.23949105827410133}'
+    file_path: saved_models/Funky_Waffle/task_1_linear_regression_model_feature_engineered.joblib
+    framework: scikit-learn
+    framework_version: 1.5.1
+    hyperparameters: '{"fit_intercept": true, "copy_X": true, "n_jobs": 5}'
+    labels:
+    - Task-1
+    - Regression
+    - best
+    model_author: Adnan Ekici
+    name: Linear Regression Model_1
+    status: under review
+    training_data: 'Customer purchase data. Trained with feature engineered RFM and
+        removed outliers.  Dataset path: data/customer_purchases.csv'
+    version: v.0.0.3
+train_config:
+    dataset:
+        categorical_columns:
+        - gender
+        numerical_columns:
+        - age
+        - annual_income
+        - purchase_amount
+        raw_dataset_csv: data/customer_purchases.csv
+        save_datasets_as_csv: true
+    model_trainer__eval__: LinearRegressionTrainer
+    registry:
+        name: ado-flow
+        url: http://172.23.0.4:5000/
+    train:
+        deflection: 0
+        features:
+        - age
+        - gender_Female
+        - Recency
+        - Frequency
+        - Monetary
+        - annual_income
+        - purchase_amount
+        hyperparameters:
+            copy_X: true
+            fit_intercept: true
+            n_jobs: 5
+        prediction_target: next_month_purchase_amount
+        random_state: 42
+        saved_model_path: task_1_linear_regression_model_feature_engineered.joblib
+        train_test_split_ratio: 0.2

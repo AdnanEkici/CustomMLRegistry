@@ -1,0 +1,13 @@
+{
+    "inference_test_payloads": [
+        {
+            "customer_id": 2,
+            "age": 40,
+            "gender": "Female",
+            "annual_income": 119228,
+            "purchase_amount": 296.86,
+            "purchase_date": "2023-11-22T19:16:58+03:00"
+        }
+    ]
+
+}

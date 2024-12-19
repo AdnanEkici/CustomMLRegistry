@@ -1,0 +1,5 @@
+[run]
+omit =
+    app\model_registry\endpoint.py
+    app\model_registry\http_status_enums.py
+    app\model_registry\endpoint_routes.py

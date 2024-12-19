@@ -1,0 +1,351 @@
+{
+  "test_insert_model_cases": [
+    {
+      "test_name": "test_only_required_fields",
+      "expectation": true,
+      "model_name": "LinearRegressionTest",
+      "features": "[feature_1, feature_2]",
+      "model_version": "1.0",
+      "model_file_path": "tmp/test_tmp_registry/linear_regression_model.joblib"
+    },
+    {
+      "test_name": "test_no_name",
+      "expectation": false,
+      "model_name": null,
+      "features": "[feature_1, feature_2]",
+      "model_version": "1.0",
+      "model_file_path": "tmp/test_tmp_registry/linear_regression_model.joblib"
+    },
+    {
+      "test_name": "test_minimal_input",
+      "expectation": true,
+      "model_name": "MinimalModelTest",
+      "features": "[feature_1, feature_2]",
+      "model_version": "0.1",
+      "model_file_path": "tmp/test_tmp_registry/linear_regression_model.joblib"
+    },
+    {
+      "test_name": "test_all_fields",
+      "expectation": true,
+      "model_name": "FullModelTest",
+      "features": "[feature_1, feature_2]",
+      "model_version": "1.1",
+      "model_file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+      "model_description": "Full Model with all fields populated",
+      "framework": "TensorFlow",
+      "framework_version": "2.5",
+      "training_data": "ImageNet dataset",
+      "hyperparameters": "{\"learning_rate\": 0.001, \"epochs\": 50}",
+      "evaluation_metrics": "{\"accuracy\": 0.95, \"loss\": 0.05}",
+      "model_author": "Alice Doe",
+      "status": "deployed",
+      "labels": ["deep-learning", "image-classification", "tensorflow"]
+    },
+    {
+      "test_name": "test_custom_hyperparameters_and_labels",
+      "expectation": true,
+      "model_name": "CustomModelTest",
+      "features": "[feature_1, feature_2]",
+      "model_version": "3.0",
+      "model_file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+      "model_description": "Custom Model for special use case",
+      "framework": "PyTorch",
+      "framework_version": "1.8",
+      "training_data": "Custom dataset",
+      "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+      "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+      "model_author": "Bob Smith",
+      "status": "under review",
+      "labels": ["custom", "pytorch", "special-use"]
+    },
+    {
+      "test_name": "test_with_wrong_model_path",
+      "expectation": false,
+      "model_name": "CustomModelTest",
+      "features": "[feature_1, feature_2]",
+      "model_version": "3.0",
+      "model_file_path": "test_tmp/wrong_linear_regression_model.joblib",
+      "model_description": "Custom Model for special use case",
+      "framework": "PyTorch",
+      "framework_version": "1.8",
+      "training_data": "Custom dataset",
+      "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+      "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+      "model_author": "Bob Smith",
+      "status": "under review",
+      "labels": ["custom", "pytorch", "special-use"]
+    }
+  ],
+  "test_delete_model_cases": [
+    {
+      "test_name": "test_delete_with_valid_db_entry",
+      "expectation": true,
+      "model_name": "CustomModelTest",
+      "model_version": "3.1",
+      "model_file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+      "model_description": "Custom Model for special use case",
+      "framework": "PyTorch",
+      "framework_version": "1.8",
+      "training_data": "Custom dataset",
+      "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+      "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+      "model_author": "Bob Smith",
+      "status": "under review",
+      "labels": ["custom", "pytorch", "special-use"]
+    },
+    {
+      "test_name": "test_delete_with_unvalid_db_entry",
+      "expectation": false,
+      "model_name": "CustomModelTest",
+      "model_version": "3.2",
+      "model_file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+      "model_description": "Custom Model for special use case",
+      "framework": "PyTorch",
+      "framework_version": "1.8",
+      "training_data": "Custom dataset",
+      "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+      "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+      "model_author": "Bob Smith",
+      "status": "under review",
+      "labels": ["custom", "pytorch", "special-use"]
+    },
+    {
+      "test_name": "test_fetch_with_model_version",
+      "expectation": false,
+      "model_name": null,
+      "model_version": "3.1",
+      "model_file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+      "model_description": "Custom Model for special use case",
+      "framework": "PyTorch",
+      "framework_version": "1.8",
+      "training_data": "Custom dataset",
+      "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+      "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+      "model_author": "Bob Smith",
+      "status": "under review",
+      "labels": ["custom", "pytorch", "special-use"]
+    },
+    {
+      "test_name": "test_fetch_with_no_model_version",
+      "expectation": false,
+      "model_name": "CustomModelTest",
+      "model_version": null,
+      "model_file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+      "model_description": "Custom Model for special use case",
+      "framework": "PyTorch",
+      "framework_version": "1.8",
+      "training_data": "Custom dataset",
+      "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+      "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+      "model_author": "Bob Smith",
+      "status": "under review",
+      "labels": ["custom", "pytorch", "special-use"]
+    }
+  ],
+  "test_fetch_model_cases": [
+    {
+      "test_name": "test_fetch_with_valid_db_entry",
+      "expectation": true,
+      "model_name": "CustomModelTest",
+      "model_version": "3.1",
+      "model_file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+      "model_description": "Custom Model for special use case",
+      "framework": "PyTorch",
+      "framework_version": "1.8",
+      "training_data": "Custom dataset",
+      "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+      "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+      "model_author": "Bob Smith",
+      "status": "under review",
+      "labels": ["custom", "pytorch", "special-use"]
+    },
+    {
+      "test_name": "test_fetch_with_unvalid_db_entry",
+      "expectation": false,
+      "model_name": "CustomModelTest",
+      "model_version": "3.2",
+      "model_file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+      "model_description": "Custom Model for special use case",
+      "framework": "PyTorch",
+      "framework_version": "1.8",
+      "training_data": "Custom dataset",
+      "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+      "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+      "model_author": "Bob Smith",
+      "status": "under review",
+      "labels": ["custom", "pytorch", "special-use"]
+    },
+    {
+      "test_name": "test_fetch_with_model_version",
+      "expectation": false,
+      "model_name": null,
+      "model_version": "3.1",
+      "model_file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+      "model_description": "Custom Model for special use case",
+      "framework": "PyTorch",
+      "framework_version": "1.8",
+      "training_data": "Custom dataset",
+      "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+      "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+      "model_author": "Bob Smith",
+      "status": "under review",
+      "labels": ["custom", "pytorch", "special-use"]
+    },
+    {
+      "test_name": "test_fetch_with_no_model_version",
+      "expectation": false,
+      "model_name": "CustomModelTest",
+      "model_version": null,
+      "model_file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+      "model_description": "Custom Model for special use case",
+      "framework": "PyTorch",
+      "framework_version": "1.8",
+      "training_data": "Custom dataset",
+      "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+      "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+      "model_author": "Bob Smith",
+      "status": "under review",
+      "labels": ["custom", "pytorch", "special-use"]
+    }
+  ],
+  "test_update_model_cases": [
+    {
+      "test_name": "test_update_with_valid_entry",
+      "expect_success": true,
+      "initial_data": {
+        "name": "CustomModelTest",
+        "features": "[feature_1, feature_2]",
+        "version": "3.1",
+        "file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+        "description": "Custom Model for special use case",
+        "framework": "PyTorch",
+        "framework_version": "1.8",
+        "training_data": "Custom dataset",
+        "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+        "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+        "model_author": "Bob Smith",
+        "status": "under review",
+        "labels": ["custom", "pytorch", "special-use"]
+      },
+      "update_data": {
+        "features": "[feature_1, feature_2]",
+        "description": "Updated description",
+        "framework": "TensorFlow",
+        "framework_version": "1.9",
+        "model_author": "Adnan Ekici",
+        "status": "archived",
+        "labels": ["updated_label"]
+      }
+    },
+    {
+      "test_name": "test_update_with_missing_values",
+      "expect_success": true,
+      "initial_data": {
+        "name": "CustomModelTest",
+        "features": "[feature_1, feature_2]",
+        "version": "3.2",
+        "file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+        "description": "Custom Model for special use case",
+        "framework": "PyTorch",
+        "framework_version": "1.8",
+        "training_data": "Custom dataset",
+        "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+        "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+        "model_author": "Bob Smith",
+        "status": "under review",
+        "labels": ["custom", "pytorch", "special-use"]
+      },
+      "update_data": {
+        "features": "[feature_1, feature_2]",
+        "description": "Updated description",
+        "framework": null,
+        "framework_version": "1.9",
+        "model_author": "Adnan Ekici",
+        "status": "archived",
+        "labels": ["updated_label"]
+      }
+    },
+    {
+      "test_name": "test_update_with_invalid_entry",
+      "expect_success": false,
+      "initial_data": {
+        "name": "CustomModelTest",
+        "features": "[feature_1, feature_2]",
+        "version": "3.3",
+        "file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+        "description": "Custom Model for special use case",
+        "framework": "PyTorch",
+        "framework_version": "1.8",
+        "training_data": "Custom dataset",
+        "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+        "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+        "model_author": "Bob Smith",
+        "status": "under review",
+        "labels": ["custom", "pytorch", "special-use"]
+      },
+      "update_data": {
+        "features": "[feature_1, feature_2]",
+        "description": "Updated description",
+        "framework": "TensorFlow",
+        "framework_version": "1.9",
+        "model_author": "Adnan Ekici",
+        "status": "archived",
+        "labels": ["updated_label"]
+      }
+    },
+    {
+      "test_name": "test_update_with_no_change",
+      "expect_success": true,
+      "initial_data": {
+        "name": "CustomModelTest",
+        "version": "3.3",
+        "features": "[feature_1, feature_2]",
+        "file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+        "description": "Custom Model for special use case",
+        "framework": "PyTorch",
+        "framework_version": "1.8",
+        "training_data": "Custom dataset",
+        "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+        "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+        "model_author": "Bob Smith",
+        "status": "under review",
+        "labels": ["custom", "pytorch", "special-use"]
+      },
+      "update_data": {
+        "description": "Custom Model for special use case",
+        "framework": "PyTorch",
+        "framework_version": "1.8",
+        "model_author": "Bob Smith",
+        "status": "under review",
+        "labels": ["updated_label"]
+      }
+    },
+    {
+      "test_name": "test_update_with_no_label_change",
+      "expect_success": true,
+      "initial_data": {
+        "name": "CustomModelTest",
+        "features": "[feature_1, feature_2]",
+        "version": "3.4",
+        "file_path": "tmp/test_tmp_registry/linear_regression_model.joblib",
+        "description": "Custom Model for special use case",
+        "framework": "PyTorch",
+        "framework_version": "1.8",
+        "training_data": "Custom dataset",
+        "hyperparameters": "{\"batch_size\": 32, \"optimizer\": \"Adam\"}",
+        "evaluation_metrics": "{\"f1_score\": 0.89, \"precision\": 0.91}",
+        "model_author": "Bob Smith",
+        "status": "under review",
+        "labels": ["custom", "pytorch", "special-use"]
+      },
+      "update_data": {
+        "description": "Custom Model for special use case",
+        "framework": "PyTorch",
+        "framework_version": "1.8",
+        "model_author": "Bob Smith",
+        "status": "under review",
+        "labels": null
+      }
+    }
+  ]
+}

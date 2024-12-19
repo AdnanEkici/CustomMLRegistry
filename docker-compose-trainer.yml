@@ -1,0 +1,22 @@
+version: "3.4"
+
+services:
+  trainer:
+      image: ai-base:latest
+      container_name: trainer-container
+      build:
+        context: .
+        dockerfile: Dockerfile.base
+      environment:
+        - CONFIGS_PATH=/opt/app/trainer_app/app/trainer/configs
+      volumes:
+        - ./data:/opt/app/trainer_app/data:ro
+        - ./saved_models:/opt/app/trainer_app/saved_models:rw
+        - ./logs:/opt/app/trainer_app/logs:rw
+        - ./saved_datasets:/opt/app/trainer_app/saved_datasets:rw
+        - ./app/logger:/opt/app/trainer_app/app/logger:ro
+        - ./app/trainer/:/opt/app/trainer_app/app/trainer:ro
+      ports:
+          - "5001:5000"
+      working_dir: /opt/app/trainer_app
+      entrypoint: "/bin/sh -c \"python3 -m app.trainer.trainer --config $${CONFIGS_PATH}/${CONFIG_FILE}\""

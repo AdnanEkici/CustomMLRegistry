@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Start Train",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "app/trainer/trainer.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--config",
+                "app/trainer/configs/linear_regression_train_config.yml"
+            ],
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        },
+        {
+            "name": "Run registry",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "app/model_registry/endpoint.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        },
+    ]
+}
